@@ -1,9 +1,7 @@
-import { TYPE } from './';
-
 enum BudgetStatusEnum {
-    PENDING = 'pending',
-    APPROVED = 'approved',
-    REJECTED = 'rejected',    
+    PENDING = 'Pending',
+    APPROVED = 'Approved',
+    REJECTED = 'Rejected',    
 }
 
 interface BudgetStatus {

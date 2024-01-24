@@ -5,3 +5,4 @@ export * from './payment';
 export * from './project';
 export * from './projectStatus';
 export * from './user';
+export * from './userRole';

@@ -1,13 +1,11 @@
-import { TYPE } from './';
-
 enum ProjectStatusEnum {
-    PENDING = 'pending',
-    APPROVED = 'approved',
-    DENIED = 'denied',
-    ONHOLD = 'onHold',
-    ONGOING = 'onGoing',
-    CANCELED = 'canceled',
-    FINISHED = 'finished'
+    PENDING = 'Pending',
+    APPROVED = 'Approved',
+    DENIED = 'Denied',
+    ONHOLD = 'On Hold',
+    ONGOING = 'On Going',
+    CANCELED = 'Canceled',
+    FINISHED = 'Finished'
 }
 
 interface ProjectStatus {
