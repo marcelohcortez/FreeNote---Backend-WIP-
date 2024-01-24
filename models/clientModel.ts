@@ -36,6 +36,10 @@ const clientSchema = new Schema({
       type: String,
       ref: "User",
     },
+    owned_projects: {
+      type: [String],
+      ref: "Project",
+    },
 }, { timestamps: true });
 
 module.exports = mongoose.model("Client", clientSchema);
