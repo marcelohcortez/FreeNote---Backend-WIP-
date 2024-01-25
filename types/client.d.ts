@@ -14,8 +14,6 @@ interface Client {
     website?: string,
     reference?: Client._id,
     owned_projects?: Project._id[],
-    created_at: Date,
-    updated_at: Date,
 }
 
 export type { Client };

@@ -1,4 +1,11 @@
 import express from 'express';
+import { 
+    getBudgets, 
+    getBudget, 
+    createBudget, 
+    deleteBudget, 
+    updateBudget } from '../controllers/budgetController';
+
 const router = express.Router();
 
 // require auth for all budget routes
@@ -19,4 +26,4 @@ router.delete('/:id', deleteBudget);
 //UPDATE budget
 router.patch('/:id', updateBudget);
 
-module.exports = router
+export default router;

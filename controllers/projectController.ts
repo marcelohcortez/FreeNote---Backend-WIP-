@@ -6,9 +6,16 @@ import { Project as ProjectType }  from "../types";
 
 // get all projects
 const getProjects = async (req: Request, res: Response) => {
-    const projects = await Project.find();
-    
-    res.status(200).json(projects);
+    try {
+        const projects = await Project.find();
+        res.status(200).json(projects);
+    } catch (error) {
+        if (error instanceof Error) {
+            res.status(404).json({ message: error.message });
+        } else {
+            res.status(500).json({ message: 'An unknown error occurred' });
+        }
+    }
 }
 
 // get single project
@@ -30,7 +37,6 @@ const getProject = async (req: Request, res: Response) => {
         }
     }
 }
-
 
 // create project
 const createProject = async (req: Request, res: Response) => {
@@ -55,6 +61,7 @@ const createProject = async (req: Request, res: Response) => {
         }
     }
 }
+
 // delete project
 const deleteProject = async (req: Request, res: Response) => {
     const { id } = req.params;

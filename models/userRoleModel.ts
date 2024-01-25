@@ -1,9 +1,9 @@
 import mongoose from 'mongoose';
-import { ProjectStatus } from '../types';
+import { UserRole } from '../types';
 
 const Schema = mongoose.Schema;
 
-const projectStatusSchema = new Schema({
+const userRoleSchema = new Schema({
     status: {
         type: String,
         enum: ['pending', 'approved', 'denied', 'onHold', 'onGoing', 'canceled', 'finished'],
@@ -12,4 +12,4 @@ const projectStatusSchema = new Schema({
     },
 }, { timestamps: true });
 
-export default mongoose.model<ProjectStatus>("ProjectStatus", projectStatusSchema, "ProjectsStatus");
+export default mongoose.model<UserRole>("UserRole", userRoleSchema, "UsersRole");

@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { Budget } from "../types";
 
 const Schema = mongoose.Schema;
 
@@ -22,7 +23,7 @@ const budgetSchema = new Schema({
       ref: "BudgetStatus",
       required: true,
     },
-    added_by: {
+    created_by: {
       type: String,
       ref: "User",
       required: true,
@@ -33,4 +34,4 @@ const budgetSchema = new Schema({
     },
 }, { timestamps: true });
 
-module.exports = mongoose.model("Budget", budgetSchema, "Budgets");
+export default mongoose.model<Budget>("Budget", budgetSchema, "Budgets");

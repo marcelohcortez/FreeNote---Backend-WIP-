@@ -28,7 +28,7 @@ const projectSchema = new Schema({
     website: String,
     startDate: Date,
     endDate: Date,
-    added_by: {
+    created_by: {
         type: String,
         ref: "User",
         required: true,

@@ -1,11 +1,18 @@
 import express from 'express';
+import { 
+    getClients, 
+    getClient, 
+    createClient, 
+    deleteClient, 
+    updateClient } from '../controllers/clientController';
+
 const router = express.Router();
 
 // require auth for all client routes
 //router.use(requireAuth)
 
 //GET all clients
-router.get('/', getClients);
+router.get('/' , getClients);
 
 //GET single client
 router.get('/:id', getClient);
@@ -19,4 +26,4 @@ router.delete('/:id', deleteClient);
 //UPDATE client
 router.patch('/:id', updateClient);
 
-module.exports = router
+export default router;

@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { Client } from "../types";
 
 const Schema = mongoose.Schema;
 
@@ -19,17 +20,17 @@ const clientSchema = new Schema({
       type: String,
       required: true,
     },
+    created_by: {
+      type: String,
+      ref: "User",
+      required: true,
+    },
     address: String,
     whatsapp: String,
     website: String,
     reference: {
         type: String,
         ref: 'Client'
-    },
-    added_by: {
-      type: String,
-      ref: "User",
-      required: true,
     },
     edited_by: {
       type: String,
@@ -41,4 +42,4 @@ const clientSchema = new Schema({
     },
 }, { timestamps: true });
 
-module.exports = mongoose.model("Client", clientSchema, "Clients");
+export default mongoose.model<Client>("Client", clientSchema, "Clients");

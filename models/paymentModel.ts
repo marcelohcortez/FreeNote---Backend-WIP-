@@ -1,9 +1,13 @@
 import mongoose from "mongoose";
+import { Payment } from "../types";
 
 const Schema = mongoose.Schema;
 
 const paymentSchema = new Schema({
-    paid: Number,
+    ammount: {
+        type: Number,
+        required: true
+    },
     budget: {
         type: String,
         ref: "Budget",
@@ -19,20 +23,20 @@ const paymentSchema = new Schema({
         ref: "Client",
         required: true,
     },
+    created_by: {
+        type: String,
+        ref: "User",
+        required: true,
+    },
     limit_date: Date,
     last_payment_value: Number,
     last_payment_date: Date,
     next_payment_value: Number,
     next_payment_date: Date,
-    added_by: {
-        type: String,
-        ref: "User",
-        required: true,
-    },
     edited_by: {
         type: String,
         ref: "User",
     },
 }, { timestamps: true });
 
-module.exports = mongoose.model("Payment", paymentSchema, "Payments");
+export default mongoose.model<Payment>("Payment", paymentSchema, "Payments");

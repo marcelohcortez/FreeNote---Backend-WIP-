@@ -4,7 +4,7 @@ import { Client } from "./client";
 import { User } from "./user";
 interface Payment {
     _id: string,
-    paid: number,
+    ammount: number,
     budget: Budget._id,
     project: Project._id,
     client: Client._id,
@@ -15,8 +15,6 @@ interface Payment {
     last_payment_date?: Date,
     next_payment_value?: number,
     next_payment_date?: Date,
-    created_at: Date,
-    updated_at: Date
 }
 
 export type { Payment };

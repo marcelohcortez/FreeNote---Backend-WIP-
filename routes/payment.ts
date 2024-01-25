@@ -1,4 +1,11 @@
 import express from 'express';
+import { 
+    getPayments, 
+    getPayment, 
+    createPayment, 
+    deletePayment, 
+    updatePayment } from '../controllers/paymentController';
+
 const router = express.Router();
 
 // require auth for all payment routes
@@ -19,4 +26,4 @@ router.delete('/:id', deletePayment);
 //UPDATE payment
 router.patch('/:id', updatePayment);
 
-module.exports = router
+export default router;

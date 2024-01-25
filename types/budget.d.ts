@@ -7,11 +7,9 @@ interface Budget {
     total: number,
     project: Project._id,
     client: Client._id,
-    budget_status: BudgetStatus.status,
+    status: BudgetStatus.status,
     created_by: User._id,
     edited_by?: User._id,
-    created_at: Date,
-    updated_at: Date
 }   
 
 export type { Budget };

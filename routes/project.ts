@@ -1,5 +1,11 @@
 import express from 'express';
-import { getProjects, getProject, createProject, deleteProject, updateProject } from '../controllers/projectController';
+import { 
+    getProjects, 
+    getProject, 
+    createProject, 
+    deleteProject, 
+    updateProject } from '../controllers/projectController';
+
 const router = express.Router();
 
 // require auth for all project routes

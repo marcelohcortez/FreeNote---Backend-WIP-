@@ -1,7 +1,8 @@
 enum BudgetStatusEnum {
     PENDING = 'Pending',
     APPROVED = 'Approved',
-    REJECTED = 'Rejected',    
+    REJECTED = 'Rejected',
+    PAID = 'Paid',    
 }
 
 interface BudgetStatus {

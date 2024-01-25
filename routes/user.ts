@@ -1,4 +1,6 @@
 import express from 'express';
+import { getUsers, getUser, createUser, deleteUser, updateUser } from '../controllers/userController';
+
 const router = express.Router();
 
 // require auth for all user routes
@@ -19,4 +21,4 @@ router.delete('/:id', deleteUser);
 //UPDATE user
 router.patch('/:id', updateUser);
 
-module.exports = router
+export default router;
