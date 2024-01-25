@@ -13,4 +13,4 @@ const budgetStatusSchema = new Schema({
 }, { timestamps: true });
 
 
-module.exports = mongoose.model('BudgetStatus', budgetStatusSchema);
+module.exports = mongoose.model('BudgetStatus', budgetStatusSchema, 'BudgetsStatus');
