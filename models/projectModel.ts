@@ -4,7 +4,6 @@ import { Project } from "../types";
 const Schema = mongoose.Schema;
 
 const projectSchema = new Schema({ 
-    _id: String,
     name: {
         type: String,
         required: true,

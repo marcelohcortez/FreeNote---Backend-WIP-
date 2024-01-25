@@ -3,7 +3,6 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema
 
 const budgetStatusSchema = new Schema({
-    _id: String,
     status: {
         type: String,
         enum: ['pending', 'approved', 'rejected'],

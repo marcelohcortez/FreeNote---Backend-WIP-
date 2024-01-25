@@ -3,7 +3,6 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 const paymentSchema = new Schema({
-    _id: String,
     paid: Number,
     budget: {
         type: String,
