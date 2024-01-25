@@ -3,7 +3,7 @@ import { Client } from "./client";
 import { BudgetStatus } from "./budgetStatus";
 import { User } from "./user";
 interface Budget {
-    id: string,
+    _id: string,
     total: number,
     project: Project._id,
     client: Client._id,

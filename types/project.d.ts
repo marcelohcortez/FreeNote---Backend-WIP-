@@ -3,7 +3,7 @@ import { Client } from "./client";
 import { ProjectStatus } from "./projectStatus";   
 import { User } from "./user";
 interface Project {
-    id: string,
+    _id: string,
     name: string,
     description: string,
     budget: Budget._id,
@@ -15,8 +15,6 @@ interface Project {
     website?: string,
     start_date?: Date,
     end_date?: Date,
-    created_at: Date,
-    updated_at: Date,
 }
 
 export type { Project };
