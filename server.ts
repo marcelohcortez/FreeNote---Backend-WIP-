@@ -7,6 +7,9 @@ import projectRoutes from "./routes/project";
 
 const app = express();
 
+//middleware
+app.use(express.json())
+
 //routes
 app.get("/", (req, res) => {
     res.send('Welcome to my server!');
