@@ -1,4 +1,5 @@
 import express from 'express';
+import { getProjects, getProject, createProject, deleteProject, updateProject } from '../controllers/projectController';
 const router = express.Router();
 
 // require auth for all project routes
@@ -19,4 +20,4 @@ router.delete('/:id', deleteProject);
 //UPDATE project
 router.patch('/:id', updateProject);
 
-module.exports = router
+export default router;
