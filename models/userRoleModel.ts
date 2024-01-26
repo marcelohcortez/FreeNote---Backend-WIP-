@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 const userRoleSchema = new Schema({
     status: {
         type: String,
-        enum: ['pending', 'approved', 'denied', 'onHold', 'onGoing', 'canceled', 'finished'],
+        enum: ['Admin', 'Member', 'Client', 'Visitor'],
         required: true,
         unique: true
     },

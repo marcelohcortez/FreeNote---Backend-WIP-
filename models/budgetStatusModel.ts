@@ -6,7 +6,7 @@ const Schema = mongoose.Schema
 const budgetStatusSchema = new Schema({
     status: {
         type: String,
-        enum: ['pending', 'approved', 'rejected', 'paid'],
+        enum: ['Pending', 'Approved', 'Rejected', 'Paid'],
         required: true,
         unique: true
     },

@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 const projectStatusSchema = new Schema({
     status: {
         type: String,
-        enum: ['pending', 'approved', 'denied', 'onHold', 'onGoing', 'canceled', 'finished'],
+        enum: ['Pending', 'Approved', 'Denied', 'On Hold', 'On Going', 'Canceled', 'Finished'],
         required: true,
         unique: true
     },
