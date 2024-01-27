@@ -1,10 +1,10 @@
-## Clients Control - Backend
+## FreeNote - Backend
 
 **LIVE DEMO: **
 
 Here is the link for the frontend repo: 
 
-
+Backend part of a 'FreeNote' system that can be used to register users, clients, projects, budgets and payments.
 
 ## Tech & 3rd party used in the project:
 - [Node.js](https://nodejs.org/)

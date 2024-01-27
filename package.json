@@ -1,15 +1,19 @@
 {
-  "name": "clients-control-backend",
+  "name": "freenote-backend",
   "version": "1.0.0",
-  "description": "Backend part of a 'clients control' system that can be used to register clients, project and their payments.",
+  "description": "Backend part of a 'FreeNote' system that can be used to register users, clients, projects, budgets and payments.",
+  "author": "Marcelo Cortez <hello@marcelocortez.dev> (https://marcelocortez.dev)",
+  "license": "ISC",
+  "repository": {
+		"type": "git",
+		"url": "https://github.com/marcelohcortez/FreeNote---Backend"
+	},
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.ts",
     "dev": "nodemon"
   },
-  "author": "Marcelo Cortez",
-  "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
