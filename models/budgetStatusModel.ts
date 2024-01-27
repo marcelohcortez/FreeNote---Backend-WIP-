@@ -10,6 +10,11 @@ const budgetStatusSchema = new Schema({
         required: true,
         unique: true
     },
+    budget: {
+        type: Schema.Types.ObjectId,
+        ref: 'Budget',
+        required: true
+    }
 }, { timestamps: true });
 
 export default mongoose.model<BudgetStatus>("BudgetStatus", budgetStatusSchema, "BudgetsStatus");

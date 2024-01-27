@@ -10,6 +10,11 @@ const projectStatusSchema = new Schema({
         required: true,
         unique: true
     },
+    project: {
+        type: Schema.Types.ObjectId,
+        ref: 'Project',
+        required: true
+    }
 }, { timestamps: true });
 
 export default mongoose.model<ProjectStatus>("ProjectStatus", projectStatusSchema, "ProjectsStatus");

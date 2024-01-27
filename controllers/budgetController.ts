@@ -42,7 +42,7 @@ const getBudget = async (req: Request, res: Response) => {
 const createBudget = async (req: Request, res: Response) => {
     const budget: Partial<BudgetType> = req.body;
 console.log("HIT")
-    const requiredFields: (keyof BudgetType)[] = ["total", "project", "client", "status", "created_by"];
+    const requiredFields: (keyof BudgetType)[] = ["total", "project", "client", "created_by"];
     const emptyFields: (keyof BudgetType)[] = requiredFields.filter(field => !budget[field]);
 
     if (emptyFields.length > 0) {

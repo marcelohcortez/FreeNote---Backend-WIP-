@@ -27,8 +27,7 @@ app.use('/api/users', cors(), userRoutes);
 
 
 //connect to DB
-process.env.DBURL ? 
-mongoose.connect(process.env.DBURL)
+mongoose.connect(process.env.DBURL!)
     .then((result) => {
         //listen for requests
         app.listen(process.env.PORT, () => {
@@ -36,5 +35,3 @@ mongoose.connect(process.env.DBURL)
         })
     })
     .catch((err) => console.log(err))
-    :
-    '';

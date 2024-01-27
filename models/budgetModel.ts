@@ -9,27 +9,22 @@ const budgetSchema = new Schema({
       required: true,
     },
     project: {
-      type: String,
+      type: Schema.Types.ObjectId,
       ref: "Project",
       required: true,
     },
     client: {
-      type: String,
+      type: Schema.Types.ObjectId,
       ref: "Client",
       required: true,
     },
-    status: {
-      type: String,
-      ref: "BudgetStatus",
-      required: true,
-    },
     created_by: {
-      type: String,
+      type: Schema.Types.ObjectId,
       ref: "User",
       required: true,
     },
     edited_by: {
-      type: String,
+      type: Schema.Types.ObjectId,
       ref: "User",
     },
 }, { timestamps: true });

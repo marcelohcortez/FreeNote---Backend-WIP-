@@ -9,22 +9,22 @@ const paymentSchema = new Schema({
         required: true
     },
     budget: {
-        type: String,
+        type: Schema.Types.ObjectId,
         ref: "Budget",
         required: true,
     },
     project: {
-        type: String,
+        type: Schema.Types.ObjectId,
         ref: "Project",
         required: true,
     },
     client: {
-        type: String,
+        type: Schema.Types.ObjectId,
         ref: "Client",
         required: true,
     },
     created_by: {
-        type: String,
+        type: Schema.Types.ObjectId,
         ref: "User",
         required: true,
     },
@@ -34,7 +34,7 @@ const paymentSchema = new Schema({
     next_payment_value: Number,
     next_payment_date: Date,
     edited_by: {
-        type: String,
+        type: Schema.Types.ObjectId,
         ref: "User",
     },
 }, { timestamps: true });

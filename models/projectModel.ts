@@ -10,18 +10,13 @@ const projectSchema = new Schema({
     },
     description: String,
     budget: {
-        type: String,
+        type: Schema.Types.ObjectId,
         ref: 'Budget',
         required: true,
     },
     client: {
-        type: String,
+        type: Schema.Types.ObjectId,
         ref: 'Client',
-        required: true,
-    },
-    status: {
-        type: String,
-        ref: 'ProjectStatus',
         required: true,
     },
     access_data: [String],
@@ -29,12 +24,12 @@ const projectSchema = new Schema({
     startDate: Date,
     endDate: Date,
     created_by: {
-        type: String,
+        type: Schema.Types.ObjectId,
         ref: "User",
         required: true,
     },
     edited_by: {
-        type: String,
+        type: Schema.Types.ObjectId,
         ref: "User",
     },
 }, { timestamps: true });

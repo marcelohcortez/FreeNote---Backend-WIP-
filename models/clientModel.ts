@@ -21,7 +21,7 @@ const clientSchema = new Schema({
       required: true,
     },
     created_by: {
-      type: String,
+      type: Schema.Types.ObjectId,
       ref: "User",
       required: true,
     },
@@ -29,15 +29,15 @@ const clientSchema = new Schema({
     whatsapp: String,
     website: String,
     reference: {
-        type: String,
+        type: Schema.Types.ObjectId,
         ref: 'Client'
     },
     edited_by: {
-      type: String,
+      type: Schema.Types.ObjectId,
       ref: "User",
     },
     owned_projects: {
-      type: [String],
+      type: [Schema.Types.ObjectId],
       ref: "Project",
     },
 }, { timestamps: true });

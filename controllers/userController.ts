@@ -1,8 +1,13 @@
 import mongoose from "mongoose";
 import { Request, Response } from "express";
+import jwt from "jsonwebtoken";
 
 import User from "../models/userModel";
 import { User as UserType } from "../types";
+
+const createToken = ({_id}: {_id: string}) => {
+    return jwt.sign({_id}, process.env.SECRET!, { expiresIn: '3d' });
+}
 
 // get all users
 const getUsers = async (req: Request, res: Response) => {
@@ -42,7 +47,7 @@ const getUser = async (req: Request, res: Response) => {
 const createUser = async (req: Request, res: Response) => {
     const user: Partial<UserType> = req.body;
 
-    const requiredFields: (keyof UserType)[] = ["email", "password", "role"];
+    const requiredFields: (keyof UserType)[] = ["email", "password"];
     const emptyFields: (keyof UserType)[] = requiredFields.filter(field => !user[field]);
 
     if (emptyFields.length > 0) {
@@ -103,4 +108,66 @@ const updateUser = async (req: Request, res: Response) => {
     }
 }
 
-export { getUsers, getUser, createUser, deleteUser, updateUser };
+// login user
+const loginUser = async (req: Request, res: Response) => {
+    const user: Partial<UserType> = req.body;
+
+    const requiredFields: (keyof UserType)[] = ["email", "password"];
+    const emptyFields: (keyof UserType)[] = requiredFields.filter(field => !user[field]);
+
+    if (emptyFields.length > 0) {
+        return res.status(400).json({ error: 'Please fill in all the fields', emptyFields });
+    }
+
+    try {
+        const userLogin: Partial<UserType> = await User.login(user.email!, user.password!);
+
+        if (userLogin._id) {
+            // create a token
+            const token = createToken({_id: userLogin._id})
+    
+            res.status(200).json({userLogin, token})
+        } else {
+            res.status(500).json({ message: 'An unknown error occurred' });
+        }
+    } catch (error) {
+        if (error instanceof Error) {
+            res.status(404).json({ message: error.message });
+        } else {
+            res.status(500).json({ message: 'An unknown error occurred' });
+        }
+    }
+}
+
+//signup user
+const signupUser = async (req: Request, res: Response) => {
+    const user: Partial<UserType> = req.body;
+
+    const requiredFields: (keyof UserType)[] = ["email", "password"];
+    const emptyFields: (keyof UserType)[] = requiredFields.filter(field => !user[field]);
+
+    if (emptyFields.length > 0) {
+        return res.status(400).json({ error: 'Please fill in all the fields', emptyFields });
+    }
+
+    try {
+        const userSignUp = await User.signup(user.email!, user.password!);
+
+        if (userSignUp._id) {
+            // create a token
+            const token = createToken({_id: userSignUp._id});
+            
+            res.status(200).json({userSignUp, token});
+        } else {
+            res.status(500).json({ message: 'An unknown error occurred' });
+        }
+    } catch (error) {
+        if (error instanceof Error) {
+            res.status(404).json({ message: error.message });
+        } else {
+            res.status(500).json({ message: 'An unknown error occurred' });
+        }
+    }
+}
+
+export { getUsers, getUser, createUser, deleteUser, updateUser, loginUser, signupUser };

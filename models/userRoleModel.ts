@@ -10,6 +10,11 @@ const userRoleSchema = new Schema({
         required: true,
         unique: true
     },
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    }
 }, { timestamps: true });
 
 export default mongoose.model<UserRole>("UserRole", userRoleSchema, "UsersRole");

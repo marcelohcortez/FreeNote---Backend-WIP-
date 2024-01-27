@@ -42,7 +42,7 @@ const getProject = async (req: Request, res: Response) => {
 const createProject = async (req: Request, res: Response) => {
     const project: Partial<ProjectType> = req.body;
 
-    const requiredFields: (keyof ProjectType)[] = ["name", "description", "budget", "client", "project_status", "created_by"];
+    const requiredFields: (keyof ProjectType)[] = ["name", "description", "budget", "client", "created_by"];
     const emptyFields: (keyof ProjectType)[] = requiredFields.filter(field => !project[field]);
 
     if (emptyFields.length > 0) {
