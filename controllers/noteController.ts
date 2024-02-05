@@ -1,14 +1,14 @@
 import mongoose from "mongoose";
 import { Request, Response } from "express";
 
-import Project from "../models/projectModel";
-import { Project as ProjectType } from "../types";
+import Note from "../models/noteModel";
+import { Note as NoteType } from "../types";
 
-// get all projects
-const getProjects = async (req: Request, res: Response) => {
+// get all notes
+const getNotes = async (req: Request, res: Response) => {
   try {
-    const projects = await Project.find();
-    res.status(200).json(projects);
+    const notes = await Note.find();
+    res.status(200).json(notes);
   } catch (error) {
     if (error instanceof Error) {
       res.status(404).json({ message: error.message });
@@ -18,17 +18,17 @@ const getProjects = async (req: Request, res: Response) => {
   }
 };
 
-// get single project
-const getProject = async (req: Request, res: Response) => {
+// get single note
+const getNote = async (req: Request, res: Response) => {
   const { id } = req.params;
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(404).send("No project with that id");
+    return res.status(404).send("No note with that id");
   }
 
   try {
-    const project = await Project.findById(id);
-    res.status(200).json(project);
+    const note = await Note.findById(id);
+    res.status(200).json(note);
   } catch (error) {
     if (error instanceof Error) {
       res.status(404).json({ message: error.message });
@@ -38,19 +38,13 @@ const getProject = async (req: Request, res: Response) => {
   }
 };
 
-// create project
-const createProject = async (req: Request, res: Response) => {
-  const project: Partial<ProjectType> = req.body;
+// create note
+const createNote = async (req: Request, res: Response) => {
+  const note: Partial<NoteType> = req.body;
 
-  const requiredFields: (keyof ProjectType)[] = [
-    "name",
-    "description",
-    "budget",
-    "client",
-    "created_by",
-  ];
-  const emptyFields: (keyof ProjectType)[] = requiredFields.filter(
-    (field) => !project[field]
+  const requiredFields: (keyof NoteType)[] = ["created_by", "info_data"];
+  const emptyFields: (keyof NoteType)[] = requiredFields.filter(
+    (field) => !note[field]
   );
 
   if (emptyFields.length > 0) {
@@ -61,8 +55,8 @@ const createProject = async (req: Request, res: Response) => {
 
   // add doc to DB
   try {
-    const newProject = await Project.create(project);
-    res.status(200).json(newProject);
+    const newNote = await Note.create(note);
+    res.status(200).json(newNote);
   } catch (error) {
     if (error instanceof Error) {
       res.status(404).json({ message: error.message });
@@ -72,17 +66,17 @@ const createProject = async (req: Request, res: Response) => {
   }
 };
 
-// delete project
-const deleteProject = async (req: Request, res: Response) => {
+// delete note
+const deleteNote = async (req: Request, res: Response) => {
   const { id } = req.params;
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(404).send("No project with that id");
+    return res.status(404).send("No note with that id");
   }
 
   try {
-    const project = await Project.findOneAndDelete({ _id: id });
-    res.status(200).json(project);
+    const note = await Note.findOneAndDelete({ _id: id });
+    res.status(200).json(note);
   } catch (error) {
     if (error instanceof Error) {
       res.status(404).json({ message: error.message });
@@ -92,20 +86,18 @@ const deleteProject = async (req: Request, res: Response) => {
   }
 };
 
-// update project
-const updateProject = async (req: Request, res: Response) => {
+// update note
+const updateNote = async (req: Request, res: Response) => {
   const { id } = req.params;
+  const note: Partial<NoteType> = req.body;
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(404).send("No project with that id");
+    return res.status(404).send("No note with that id");
   }
 
   try {
-    const project = await Project.findOneAndUpdate(
-      { _id: id },
-      { ...req.body }
-    );
-    res.status(200).json(project);
+    const updatedNote = await Note.findByIdAndUpdate(id, note, { new: true });
+    res.status(200).json(updatedNote);
   } catch (error) {
     if (error instanceof Error) {
       res.status(404).json({ message: error.message });
@@ -115,4 +107,4 @@ const updateProject = async (req: Request, res: Response) => {
   }
 };
 
-export { getProjects, getProject, createProject, deleteProject, updateProject };
+export { getNotes, getNote, createNote, deleteNote, updateNote };
