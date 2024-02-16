@@ -14,7 +14,6 @@ const createToken = (_id: string) => {
 // login user
 const loginUser = async (req: Request, res: Response) => {
   const user: Partial<UserType> = req.body;
-
   const requiredFields: (keyof UserType)[] = ["email", "password"];
   const emptyFields: (keyof UserType)[] = requiredFields.filter(
     (field) => !user[field]

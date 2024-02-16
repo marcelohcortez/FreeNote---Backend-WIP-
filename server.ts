@@ -10,7 +10,8 @@ const noteRoutes = require("./routes/note");
 const paymentRoutes = require("./routes/payment");
 const projectRoutes = require("./routes/project");
 const userRoutes = require("./routes/user");
-const authRoutes = require("./routes/auth");
+const signupRoutes = require("./routes/signup");
+const loginRoutes = require("./routes/login");
 
 const app = express();
 
@@ -23,7 +24,8 @@ app.use("/api/payments", cors(), paymentRoutes);
 app.use("/api/projects", cors(), projectRoutes);
 app.use("/api/users", cors(), userRoutes);
 app.use("/api/status/budgets", cors(), budgetStatusRoutes);
-app.use("/api/auth", cors(), authRoutes);
+app.use("/api/signup", cors(), signupRoutes);
+app.use("/api/login", cors(), loginRoutes);
 
 //connect to DB
 mongoose
