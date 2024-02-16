@@ -1,24 +1,20 @@
-import "dotenv/config";
-import express from "express";
-import cors from "cors";
-import mongoose from "mongoose";
+require("dotenv").config();
+const express = require("express");
+const cors = require("cors");
+const mongoose = require("mongoose");
 
-import budgetRoutes from "./routes/budget";
-import clientRoutes from "./routes/client";
-import noteRoutes from "./routes/note";
-import paymentRoutes from "./routes/payment";
-import projectRoutes from "./routes/project";
-import userRoutes from "./routes/user";
+const budgetRoutes = require("./routes/budget");
+const budgetStatusRoutes = require("./routes/budgetStatus");
+const clientRoutes = require("./routes/client");
+const noteRoutes = require("./routes/note");
+const paymentRoutes = require("./routes/payment");
+const projectRoutes = require("./routes/project");
+const userRoutes = require("./routes/user");
+const authRoutes = require("./routes/auth");
 
 const app = express();
 
-//middleware
 app.use(express.json());
-
-//routes
-app.get("/", (req, res) => {
-  res.send("Welcome to my server!");
-});
 
 app.use("/api/budgets", cors(), budgetRoutes);
 app.use("/api/clients", cors(), clientRoutes);
@@ -26,14 +22,16 @@ app.use("/api/notes", cors(), noteRoutes);
 app.use("/api/payments", cors(), paymentRoutes);
 app.use("/api/projects", cors(), projectRoutes);
 app.use("/api/users", cors(), userRoutes);
+app.use("/api/status/budgets", cors(), budgetStatusRoutes);
+app.use("/api/auth", cors(), authRoutes);
 
 //connect to DB
 mongoose
   .connect(process.env.DBURL!)
-  .then((result) => {
+  .then((result: any) => {
     //listen for requests
     app.listen(process.env.PORT, () => {
       console.log("Connected to DB & listening on port", process.env.PORT);
     });
   })
-  .catch((err) => console.log(err));
+  .catch((err: any) => console.log(err));
