@@ -1,20 +1,26 @@
-import mongoose from 'mongoose';
-import { BudgetStatus } from '../types';
+import mongoose from "mongoose";
+import { BudgetStatus } from "../types";
 
-const Schema = mongoose.Schema
+const Schema = mongoose.Schema;
 
-const budgetStatusSchema = new Schema({
+const budgetStatusSchema = new Schema(
+  {
     status: {
-        type: String,
-        enum: ['Pending', 'Approved', 'Rejected', 'Paid'],
-        required: true,
-        unique: true
+      type: String,
+      enum: ["Pending", "Approved", "Rejected", "Paid"],
+      required: true,
     },
     budget: {
-        type: Schema.Types.ObjectId,
-        ref: 'Budget',
-        required: true
-    }
-}, { timestamps: true });
+      type: Schema.Types.ObjectId,
+      ref: "Budget",
+      required: true,
+    },
+  },
+  { timestamps: true }
+);
 
-export default mongoose.model<BudgetStatus>("BudgetStatus", budgetStatusSchema, "BudgetsStatus");
+export default mongoose.model<BudgetStatus>(
+  "BudgetStatus",
+  budgetStatusSchema,
+  "BudgetsStatus"
+);

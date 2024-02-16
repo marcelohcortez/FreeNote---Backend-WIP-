@@ -3,10 +3,12 @@ import { Client } from "../types";
 
 const Schema = mongoose.Schema;
 
-const clientSchema = new Schema({
+const clientSchema = new Schema(
+  {
     name: {
       type: String,
       required: true,
+      unique: true,
     },
     email: {
       type: String,
@@ -29,8 +31,8 @@ const clientSchema = new Schema({
     whatsapp: String,
     website: String,
     reference: {
-        type: Schema.Types.ObjectId,
-        ref: 'Client'
+      type: Schema.Types.ObjectId,
+      ref: "Client",
     },
     edited_by: {
       type: Schema.Types.ObjectId,
@@ -40,6 +42,8 @@ const clientSchema = new Schema({
       type: [Schema.Types.ObjectId],
       ref: "Project",
     },
-}, { timestamps: true });
+  },
+  { timestamps: true }
+);
 
 export default mongoose.model<Client>("Client", clientSchema, "Clients");

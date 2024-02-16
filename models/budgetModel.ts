@@ -3,9 +3,10 @@ import { Budget } from "../types";
 
 const Schema = mongoose.Schema;
 
-const budgetSchema = new Schema({
+const budgetSchema = new Schema(
+  {
     total: {
-      type: Number,
+      type: String,
       required: true,
     },
     project: {
@@ -26,7 +27,10 @@ const budgetSchema = new Schema({
     edited_by: {
       type: Schema.Types.ObjectId,
       ref: "User",
+      required: true,
     },
-}, { timestamps: true });
+  },
+  { timestamps: true }
+);
 
 export default mongoose.model<Budget>("Budget", budgetSchema, "Budgets");
