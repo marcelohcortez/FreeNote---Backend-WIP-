@@ -18,6 +18,20 @@ const getProjects = async (req: Request, res: Response) => {
   }
 };
 
+// get all project names and ids
+const getProjectsNamesAndIds = async (req: Request, res: Response) => {
+  try {
+    const projects = await Project.find().select("name _id");
+    res.status(200).json(projects);
+  } catch (error) {
+    if (error instanceof Error) {
+      res.status(404).json({ message: error.message });
+    } else {
+      res.status(500).json({ message: "An unknown error occurred" });
+    }
+  }
+};
+
 // get single project
 const getProject = async (req: Request, res: Response) => {
   const { id } = req.params;
@@ -115,4 +129,11 @@ const updateProject = async (req: Request, res: Response) => {
   }
 };
 
-export { getProjects, getProject, createProject, deleteProject, updateProject };
+export {
+  getProjects,
+  getProjectsNamesAndIds,
+  getProject,
+  createProject,
+  deleteProject,
+  updateProject,
+};
