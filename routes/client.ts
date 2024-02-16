@@ -1,10 +1,12 @@
-import express from 'express';
-import { 
-    getClients, 
-    getClient, 
-    createClient, 
-    deleteClient, 
-    updateClient } from '../controllers/clientController';
+import express from "express";
+import {
+  getClients,
+  getClientsNamesAndIds,
+  getClient,
+  createClient,
+  deleteClient,
+  updateClient,
+} from "../controllers/clientController";
 
 const router = express.Router();
 
@@ -12,18 +14,21 @@ const router = express.Router();
 //router.use(requireAuth)
 
 //GET all clients
-router.get('/' , getClients);
+router.get("/", getClients);
+
+// GET all clients names and ids
+router.get("/names-and-ids", getClientsNamesAndIds);
 
 //GET single client
-router.get('/:id', getClient);
+router.get("/:id", getClient);
 
 //POST new client
-router.post('/', createClient);
+router.post("/", createClient);
 
 //DELETE client
-router.delete('/:id', deleteClient);
+router.delete("/:id", deleteClient);
 
 //UPDATE client
-router.patch('/:id', updateClient);
+router.patch("/:id", updateClient);
 
-export default router;
+module.exports = router;

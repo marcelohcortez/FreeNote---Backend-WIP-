@@ -1,10 +1,11 @@
-import express from 'express';
-import { 
-    getBudgets, 
-    getBudget, 
-    createBudget, 
-    deleteBudget, 
-    updateBudget } from '../controllers/budgetController';
+import express from "express";
+import {
+  getBudgets,
+  getBudget,
+  createBudget,
+  deleteBudget,
+  updateBudget,
+} from "../controllers/budgetController";
 
 const router = express.Router();
 
@@ -12,18 +13,18 @@ const router = express.Router();
 //router.use(requireAuth)
 
 //GET all budgets
-router.get('/', getBudgets);
+router.get("/", getBudgets);
 
 //GET single budget
-router.get('/:id', getBudget);
+router.get("/:id", getBudget);
 
 //POST new budget
-router.post('/', createBudget);
+router.post("/", createBudget);
 
 //DELETE budget
-router.delete('/:id', deleteBudget);
+router.delete("/:id", deleteBudget);
 
 //UPDATE budget
-router.patch('/:id', updateBudget);
+router.patch("/:id", updateBudget);
 
-export default router;
+module.exports = router;

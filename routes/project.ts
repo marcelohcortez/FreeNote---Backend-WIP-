@@ -1,6 +1,7 @@
 import express from "express";
 import {
   getProjects,
+  getProjectsNamesAndIds,
   getProject,
   createProject,
   deleteProject,
@@ -15,6 +16,9 @@ const router = express.Router();
 // GET all projects
 router.get("/", getProjects);
 
+// GET all projects names and ids
+router.get("/names-and-ids", getProjectsNamesAndIds);
+
 // GET single project
 router.get("/:id", getProject);
 
@@ -27,4 +31,4 @@ router.delete("/:id", deleteProject);
 // UPDATE project
 router.patch("/:id", updateProject);
 
-export default router;
+module.exports = router;

@@ -27,4 +27,4 @@ router.delete("/:id", deleteNote);
 // UPDATE note
 router.patch("/:id", updateNote);
 
-export default router;
+module.exports = router;
